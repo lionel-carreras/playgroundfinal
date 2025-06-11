@@ -1,0 +1,89 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}Tienda{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <h2 class="mb-4">Productos Disponibles</h2>
+  <div class="row">
+    {% for producto in productos %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <img 
+            src="{{ producto.imagen.url }}" 
+            class="card-img-top" 
+            alt="{{ producto.titulo }}"
+          >
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ producto.titulo }}</h5>
+            <p class="card-text mb-2">Precio: ${{ producto.precio }}</p>
+            <p class="card-text mb-2">Stock: {{ producto.stock }}</p>
+            
+            {% if user.is_authenticated %}
+              <a 
+                href="{% url 'messenger:conversation' producto.vendedor.pk %}" 
+                class="btn btn-outline-info mb-3"
+              >
+                <i class="fa fa-paper-plane"></i>Mensaje al Vendedor
+              </a>
+            {% else %}
+              <a 
+                href="{% url 'accounts:login' %}?next={% url 'messenger:conversation' producto.vendedor.pk %}" 
+                class="btn btn-outline-info mb-3"
+              >
+                <i class="fa fa-paper-plane"></i>Mensaje al Vendedor
+              </a>
+            {% endif %}
+            
+            <form method="post" action="{% url 'products:add_to_cart' producto.pk %}" class="mt-auto">
+              {% csrf_token %}
+              <div class="input-group mb-3">
+                <button type="button" class="btn btn-outline-secondary js-decrement" title="Disminuir cantidad">−</button>
+                <input 
+                  type="number" 
+                  name="quantity" 
+                  value="1" 
+                  min="1" 
+                  class="form-control text-center quantity-input" 
+                  style="max-width: 60px;"
+                >
+                <button type="button" class="btn btn-outline-secondary js-increment" title="Aumentar cantidad">+</button>
+              </div>
+              {% if producto.stock > 0 %}
+                <button type="submit" class="btn btn-primary w-100">Comprar</button>
+              {% else %}
+                <button type="button" class="btn btn-secondary w-100" disabled>Agotado</button>
+              {% endif %}
+            </form>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12">
+        <p>No hay productos disponibles en este momento.</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.js-decrement').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const input = btn.parentElement.querySelector('.quantity-input');
+        let v = parseInt(input.value)||1;
+        if (v>1) input.value = v-1;
+      });
+    });
+    document.querySelectorAll('.js-increment').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const input = btn.parentElement.querySelector('.quantity-input');
+        let v = parseInt(input.value)||1;
+        input.value = v+1;
+      });
+    });
+  });
+</script>
+{% endblock %}
+

@@ -1,0 +1,44 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}Pago{% endblock %}
+
+{% block content %}
+<div class="container my-5" style="max-width: 500px;">
+  <h2 class="mb-4 text-center">Formulario de Pago</h2>
+  <form method="post" action="{% url 'products:pagar' %}">
+  {% csrf_token %}
+
+  {% if total %}
+    <div class="mb-3 text-center">
+      <label class="form-label">Importe a pagar:</label>
+      <div><strong>${{ total }}</strong></div>
+      <input type="hidden" name="total" value="{{ total }}">
+    </div>
+  {% endif %}
+
+  <div class="mb-3">
+    <label for="cardholder" class="form-label">Nombre del Titular</label>
+    <input type="text" class="form-control" id="cardholder" name="cardholder" required>
+  </div>
+  <div class="mb-3">
+    <label for="card_number" class="form-label">Número de Tarjeta</label>
+    <input type="text" class="form-control" id="card_number" name="card_number"
+           placeholder="XXXX XXXX XXXX XXXX" maxlength="19" required>
+  </div>
+  <div class="row gx-2 mb-3">
+    <div class="col-6">
+      <label for="expiry_date" class="form-label">Fecha de Expiración</label>
+      <input type="month" class="form-control" id="expiry_date" name="expiry_date" required>
+    </div>
+    <div class="col-6">
+      <label for="cvv" class="form-label">CVC / CVV</label>
+      <input type="password" class="form-control" id="cvv" name="cvv" maxlength="4" required>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-success w-100">Pagar</button>
+</form>
+
+</div>
+{% endblock %}

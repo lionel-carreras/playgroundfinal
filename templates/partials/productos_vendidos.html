@@ -1,0 +1,88 @@
+{% load static %}
+    <section class="bg-light">
+        <div class="container py-5">
+            <div class="row text-center py-3">
+                <div class="col-lg-6 m-auto">
+                    <h1 class="h1">Productos más vendidos</h1>
+                    <p>
+                        Acá encontrarás los productos mas vendidos al alcance de tu mano
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100">
+                        <a href="{%url 'products:comprar'%}">
+                            <img src="{% static '/img/category_img_01.jpg' %}" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                </li>
+                                <li class="text-muted text-right">$120.000</li>
+                            </ul>
+                            <a href="{%url 'products:comprar'%}" class="h2 text-decoration-none text-dark">Reloj Casio</a>
+                            <p class="card-text">
+                                Reloj Casio Vintage semi nuevo.
+                            </p>
+                            <p class="text-muted">Reviews (2)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100">
+                        <a href="{%url 'products:comprar'%}">
+                            <img src="{% static '/img/category_img_02.jpg' %}" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                </li>
+                                <li class="text-muted text-right">$210.000</li>
+                            </ul>
+                            <a href="{%url 'products:comprar'%}" class="h2 text-decoration-none text-dark">Zapatilla Nike Running</a>
+                            <p class="card-text">
+                                Zapatillas NIKE Running talles 43 al 46 Ar a estrenar
+                            </p>
+                            <p class="text-muted">Reviews (8)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100">
+                        <a href="{%url 'products:comprar'%}">
+                            <img src="{% static '/img/category_img_03.jpg'%}" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                </li>
+                                <li class="text-muted text-right">$55.000</li>
+                            </ul>
+                            <a href="{%url 'products:comprar'%}" class="h2 text-decoration-none text-dark">Lentes sol RanBan</a>
+                            <p class="card-text">
+                                Lentes de sol con proteccion UV imitación Rayban Nuevos!!
+                            </p>
+                            <p class="text-muted">Reviews (74)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    

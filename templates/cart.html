@@ -1,0 +1,44 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}Mi Carrito{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <h2 class="mb-4">Mi Carrito de Compras</h2>
+
+  {% if productos_carrito %}
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in productos_carrito %}
+            <tr>
+              <td>{{ item.producto.titulo }}</td>
+              <td>{{ item.cantidad }}</td>
+              <td>${{ item.producto.precio }}</td>
+              <td>${{ item.subtotal }}</td>
+            </tr>
+          {% endfor %}
+          <tr>
+            <td colspan="3" class="text-end"><strong>Total:</strong></td>
+            <td><strong>${{ total }}</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-end">
+      <a href="{% url 'products:pago' %}" class="btn btn-success">Ir a Pagar</a>
+    </div>
+  {% else %}
+    <p>No tienes productos en tu carrito.</p>
+  {% endif %}
+</div>
+{% endblock %}

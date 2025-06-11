@@ -1,0 +1,122 @@
+{% extends "base/base.html" %}
+
+{% block title %}Acerca de mí{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="container my-5">
+ 
+  <div class="row justify-content-center mb-4">
+    <div class="col-md-4 text-center">
+      
+      <img src="{% static '/img/lio.jpg' %}" class="rounded-circle img-fluid mb-3" alt="Avatar de Lionel">
+      <h2 class="mb-1">Lionel Carreras</h2>
+      <p class="text-muted">Analista de Infraestructura / Sysadmin</p>
+    </div>
+  </div>
+
+  
+  <div class="card shadow-sm mb-5">
+    <div class="card-body">
+      <h3 class="card-title">Resumen</h3>
+      <p class="card-text">
+        Aprendiendo y creciendo cada día un poco más, a veces tropiezo pero nunca me detengo.
+        Me apasiona la tecnología, la automatización de procesos y la mejora continua de la infraestructura TI.
+        Soy una persona proactiva, orientada al detalle y comprometida con el trabajo en equipo.
+      </p>
+    </div>
+  </div>
+
+ 
+  <div class="card shadow-sm mb-5">
+    <div class="card-body">
+      <h3 class="card-title mb-4">Experiencia profesional</h3>
+      <div class="accordion" id="experienciaAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingBrioJefe">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBrioJefe" aria-expanded="false" aria-controls="collapseBrioJefe">
+              Jefe de Departamento TI – Expreso Brio (dic 2020 – Presente)
+            </button>
+          </h2>
+          <div id="collapseBrioJefe" class="accordion-collapse collapse" aria-labelledby="headingBrioJefe" data-bs-parent="#experienciaAccordion">
+            <div class="accordion-body">
+              <ul class="mb-0">
+                <li>Coordinar, implementar y mantener la infraestructura IT de la empresa.</li>
+                <li>Administración de servidores y servicios de red.</li>
+                <li>Planificación de proyectos, control de presupuesto y supervisión de proveedores.</li>
+                <li>Implementación de políticas de seguridad y respaldo de datos.</li>
+                <li>Gestión de tickets y atención de incidentes críticos en tiempo real.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+ 
+  <div class="row mb-5">
+ 
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h3 class="card-title">Educación</h3>
+          <ul class="list-unstyled mb-0">
+            <li>
+              <i class="fas fa-graduation-cap text-primary me-2"></i>
+              <strong>Analista de Sistemas</strong>, Terciario J. J. Urquiza (ene 2015 – nov 2017)
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h3 class="card-title">Habilidades y certificaciones</h3>
+          <ul class="mb-3">
+            <li><i class="fas fa-check-circle text-success me-2"></i><strong>Principales Aptitudes:</strong> Project Manager, Trello, Scrum</li>
+            <li><i class="fas fa-certificate text-warning me-2"></i><strong>Certificaciones:</strong></li>
+            <ul class="list-unstyled ps-4">
+              <li><i class="fas fa-award text-secondary me-2"></i>Azure Fundamentals AZ-900</li>
+              <li><i class="fas fa-award text-secondary me-2"></i>Azure Fundamentals AZ-104</li>
+              <li><i class="fas fa-award text-secondary me-2"></i>MikroTik</li>
+              <li><i class="fas fa-award text-secondary me-2"></i>Python – Django</li>
+              <li><i class="fas fa-award text-secondary me-2"></i>Scrum Foundations Professional (SFP)</li>
+              <li><i class="fas fa-award text-secondary me-2"></i>Chatbots con IA IBM WatsonX</li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="card shadow-sm mb-5">
+    <div class="card-body">
+      <h3 class="card-title mb-4">Contacto</h3>
+      <ul class="list-unstyled">
+        <li class="mb-2">
+          <i class="fas fa-envelope text-danger me-2"></i>
+          <a href="mailto:lionelcarreras.it@gmail.com">lionelcarreras.it@gmail.com</a>
+        </li>
+        <li class="mb-2">
+          <i class="fas fa-phone text-success me-2"></i>
+          +54 341 5081959
+        </li>
+        <li class="mb-2">
+          <i class="fas fa-map-marker-alt text-primary me-2"></i>
+          Corrientes 3029, Rosario, Argentina
+        </li>
+        <li>
+          <i class="fab fa-linkedin text-info me-2"></i>
+          <a href="https://www.linkedin.com/in/lionel-carreras" target="_blank">Lionel Carreras</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

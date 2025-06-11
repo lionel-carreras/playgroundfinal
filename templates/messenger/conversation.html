@@ -1,0 +1,47 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}Conversación con {{ other.username }}{% endblock %}
+
+{% block content %}
+<div class="container my-5" style="max-width: 700px;">
+  <h2 class="mb-4">
+    <i class="fa fa-comments me-1"></i>
+    Conversación con <strong>{{ other.username }}</strong>
+  </h2>
+
+  <div class="border rounded p-3 mb-4" style="max-height: 400px; overflow-y: auto; background: #f8f9fa;">
+    {% for msg in hilo %}
+      <div class="d-flex {% if msg.emisor == request.user %}justify-content-end{% else %}justify-content-start{% endif %} mb-2">
+        <div class="p-2 rounded"
+             style="max-width: 70%; background: {% if msg.emisor == request.user %}#d1e7dd{% else %}#ffffff{% endif %};">
+          <small class="text-muted">
+            {{ msg.emisor.username }} • {{ msg.fecha_envio|date:"Y-m-d H:i" }}
+          </small>
+          <p class="mb-0">{{ msg.contenido|linebreaks }}</p>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center text-muted">No hay mensajes en esta conversación.</p>
+    {% endfor %}
+  </div>
+
+      <form 
+    method="post" 
+    action="{% url 'messenger:conversation' other.pk %}"
+  >
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="input-group">
+      {{ form.contenido }}
+      <button class="btn btn-primary" type="submit">
+        <i class="fa fa-paper-plane"></i>
+      </button>
+    </div>
+  </form>
+
+
+  <a href="{% url 'messenger:inbox' %}" class="btn btn-secondary mt-3">
+    <i class="fa fa-arrow-left me-1"></i>Volver a Bandeja
+  </a>
+</div>
+{% endblock %}

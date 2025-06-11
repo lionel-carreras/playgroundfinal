@@ -1,0 +1,30 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}Iniciar Sesión{% endblock %}
+
+{% block content %}
+<div class="container my-5" style="max-width: 400px;">
+  <h2 class="mb-4 text-center">Iniciar Sesión</h2>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="mb-3">
+      <label for="id_username" class="form-label">Usuario</label>
+      {{ form.username }}
+      {{ form.username.errors }}
+    </div>
+    <div class="mb-3">
+      <label for="id_password" class="form-label">Contraseña</label>
+      {{ form.password }}
+      {{ form.password.errors }}
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+  </form>
+
+  <div class="mt-2 text-center">
+    ¿No tienes cuenta?
+    <a href="{% url 'accounts:register' %}">Regístrate</a>
+  </div>
+</div>
+{% endblock %}

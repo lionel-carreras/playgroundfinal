@@ -1,0 +1,43 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}{{ product.titulo }}{% endblock %}
+
+{% block content %}
+<div class="container my-5" style="max-width: 600px;">
+  <h2 class="mb-4">{{ product.titulo }}</h2>
+
+  <div class="text-center mb-4">
+    <img 
+      src="{{ product.imagen.url }}" 
+      alt="{{ product.titulo }}" 
+      class="img-fluid rounded" 
+      style="max-height: 300px; object-fit: cover;"
+    >
+  </div>
+
+  <div class="mb-3">
+    <h5>Descripción</h5>
+    <p>{{ product.descripcion|safe }}</p>
+  </div>
+
+  <ul class="list-group mb-4">
+    <li class="list-group-item">
+      <strong>Categoría:</strong> {{ product.categoria.nombre }}
+    </li>
+    <li class="list-group-item">
+      <strong>Precio:</strong> ${{ product.precio }}
+    </li>
+    <li class="list-group-item">
+      <strong>Stock:</strong> {{ product.stock }}
+    </li>
+  </ul>
+
+  <div class="d-flex gap-2">
+   
+    <a href="{% url 'products:publicaciones' %}" class="btn btn-secondary ms-auto">
+      <i class="fa fa-arrow-left me-1"></i>Volver
+    </a>
+  </div>
+</div>
+{% endblock %}

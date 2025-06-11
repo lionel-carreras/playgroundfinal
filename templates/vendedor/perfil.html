@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}Perfil{% endblock %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 600px;">
+  <h2 class="mb-4">Mi Perfil</h2>
+
+  <ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between">
+      <strong>Usuario:</strong>
+      <span>{{ user.username }}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between">
+      <strong>Correo electrónico:</strong>
+      <span>{{ user.email }}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between">
+      <strong>Nombre:</strong>
+      <span>{{ user.first_name }}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between">
+      <strong>Apellido:</strong>
+      <span>{{ user.last_name }}</span>
+    </li>
+  </ul>
+
+  <div class="mt-4">
+    <a href="{% url 'products:edit_profile' %}" class="btn btn-primary">Editar Perfil</a>
+ 
+  
+    <a href="{% url 'products:home' %}" class="btn btn-danger">Salir</a>
+  </div>
+</div>
+{% endblock %}

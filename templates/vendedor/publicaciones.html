@@ -1,0 +1,69 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}Mis Publicaciones{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <h2 class="mb-4">Mis Publicaciones</h2>
+
+  {% if publicaciones %}
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead class="table-light xl-border-bottom" >
+          <tr>
+            
+            <th scope="col">Imagen</th>
+            <th scope="col">Título</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Stock</th>
+            <th scope="col" class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for pub in publicaciones %}
+          <tr>
+            
+            <td>
+              <img src="{{ pub.imagen.url }}" 
+                   alt="{{ pub.titulo }}" 
+                   class="img-thumbnail" 
+                   style="width:60px; height:60px; object-fit:cover;">
+            </td>
+            <td>{{ pub.titulo }}</td>
+            <td>{{ pub.descripcion }}</td>
+            <td>${{ pub.precio }}</td>
+            <td>{{ pub.stock }}</td>
+            <td class="text-center">
+            <div class="d-flex justify-content-center align-items-center gap-1">
+            <a href="{% url 'products:detail' pub.id %}"
+                class="btn btn-primary btn-sm p-1 me-1"
+                title="Ver">
+                <i class="fa fa-eye fa-sm"></i>
+            </a>
+            <a href="{% url 'products:edit' pub.id %}"
+                class="btn btn-warning btn-sm p-1 text-white me-1"
+                title="Editar">
+                <i class="fa fa-edit fa-sm"></i>
+            </a>
+            <a href="{% url 'products:delete' pub.id %}"
+                class="btn btn-danger btn-sm p-1"
+                title="Eliminar"
+                onclick="return confirm('¿Seguro que deseas eliminar esta publicación?');">
+                <i class="fa fa-trash fa-sm"></i>
+            </a>
+            </td>
+        </div>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="alert alert-info">
+      No tienes publicaciones. <a href="{% url 'products:vender' %}">Publica tu primer producto</a>.
+    </div>
+  {% endif %}
+</div>
+{% endblock %}
